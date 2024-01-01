@@ -41,7 +41,40 @@ class BinarySearchTree {
         }
     }
 
+    // DFS
+    // In Order
 
+    inOrder(root){
+        if(root == null){
+            return
+        }else{
+           this.inOrder(root.left)
+           console.log(root.val);
+           this.inOrder(root.right)
+        }
+    }
+
+    preOrder(root){
+        if(root == null){
+            return;
+        }else{
+            console.log(root.val);
+            this.preOrder(root.left)
+            this.preOrder(root.right)
+        }
+    }
+
+    postOrder(root){
+        if(root == null){
+            return;
+        }else{
+            this.postOrder(root.left)
+            this.postOrder(root.right)
+            console.log(root.val);
+        }
+    }
+
+    // BFS 
     levelOrder() {
         let queue = []
         queue.push(this.root)
@@ -139,7 +172,34 @@ class BinarySearchTree {
         }
     }
 
+    getLargestAndSecondLargest(root){
+        let large = root.val;
+        let second = root.val;
 
+        let queue =[root]
+        while(queue.length){
+            let temp = queue.shift()
+
+            if(temp.val > large){
+                second = large;
+                large = temp.val;
+            } 
+
+            if(temp.val < large && temp.val > second){
+                second = temp.val;
+            }
+
+            if(temp.left){
+                queue.push(temp.left)
+            }
+
+            if(temp.right){
+                queue.push(temp.right)
+            }
+        }
+
+        return[large,second]
+    }
 }
 
 var bst = new BinarySearchTree()
@@ -155,5 +215,11 @@ bst.insert(17)
 // console.log(`${bst.getMax(bst.root)}===This is Maximum Value`);
 // console.log(`${bst.getMin(bst.root)}=== This is Minimum Value`);
 
-bst.delete(3)
-bst.levelOrder()
+// const [large,second] = bst.getLargestAndSecondLargest(bst.root)
+// console.log(`Largest Value = ${large} Second Largest Value = ${second}`);
+
+// bst.delete(3)
+// bst.levelOrder()
+// bst.inOrder(bst.root)
+// bst.preOrder(bst.root)
+// bst.postOrder(bst.root)
