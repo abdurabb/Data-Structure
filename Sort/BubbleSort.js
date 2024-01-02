@@ -1,4 +1,4 @@
-let arr = [4,3,34,1,2,12,14]
+let arr = [4,3,34,1,2,12,14,100]
 
 for(let i=0;i<arr.length;i++){
     for(let j=0;j<arr.length-i;j++){
@@ -9,4 +9,5 @@ for(let i=0;i<arr.length;i++){
         }
     }
 }
+
 console.log(arr);
