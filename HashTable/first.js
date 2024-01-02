@@ -76,7 +76,7 @@ hash.set('place','Cheleri')
 hash.set('name','Aani')
 
 hash.display()
-// console.log(hash.get('Age'));
+console.log(hash.get('Age'));
 hash.remove('professional')
 console.log('After Remove The Item');
 hash.display()
